@@ -24,9 +24,20 @@ const CartProvider = ({ children }) => {
     // console.log(cartItem);
     // console.log(`${product.title} added to the Cart`)
   };
-  console.log(cart);
+  // console.log(cart);
+  const removeFromCart = (id) => {
+    const newCart = cart.filter((item) => {
+      return item.id !== id;
+    });
+    setCart(newCart)
+  }
+
+  const clearCart = () => {
+    setCart([]);
+  }
+
   return (
-  <CartContext.Provider value={{cart, addToCart}}>{children}</CartContext.Provider>
+  <CartContext.Provider value={{cart, addToCart, removeFromCart, clearCart}}>{children}</CartContext.Provider>
 );
 };
 
